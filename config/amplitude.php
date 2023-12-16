@@ -16,6 +16,6 @@ return [
     */
     'driver' => 'amplitude',
 
-    'api_key' => env('AMPLITUDE_API_KEY'),
+    'api_key' => env('AMPLITUDE_API_KEY', ''),
     'api_url' => env('AMPLITUDE_API_URL', 'https://api.eu.amplitude.com/2/httpapi'),
 ];
