@@ -1,25 +1,12 @@
-# A Laravel package to work with Amplitude.
-
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/francescomalatesta/laravel-amplitude.svg?style=flat-square)](https://packagist.org/packages/francescomalatesta/laravel-amplitude)
-[![Build Status](https://img.shields.io/travis/francescomalatesta/laravel-amplitude/master.svg?style=flat-square)](https://travis-ci.org/francescomalatesta/laravel-amplitude)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/francescomalatesta/laravel-amplitude/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/francescomalatesta/laravel-amplitude/?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/francescomalatesta/laravel-amplitude.svg?style=flat-square)](https://packagist.org/packages/francescomalatesta/laravel-amplitude)
-
-![](laravel-amplitude.png)
-
-This package will be your best friend if you need to track events for your Laravel application in Amplitude.
-
-This package is compatible with the 5.8 version of Laravel.
+# Laravel package for Amplitude API.
 
 ## Installation
 
-You can install the package via composer:
-
 ```bash
-composer require francescomalatesta/laravel-amplitude
+composer require viezel/laravel-amplitude
 ```
 
-Do not forget to publish the config file with Artisan:
+Do not forget to publish the config file:
 
 ```bash
 artisan vendor:publish
@@ -108,14 +95,6 @@ Amplitude::queueEvent('subscription_paid', ['was_trial' => true]);
 // send them!
 Amplitude::sendQueuedEvents();
 ```
-
-### Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Security
 
