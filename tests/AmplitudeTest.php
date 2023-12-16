@@ -1,13 +1,11 @@
 <?php
 
-
 namespace LaravelAmplitude\Tests;
 
-
 use LaravelAmplitude\Amplitude;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
 use LaravelAmplitude\Drivers\AmplitudeDriverInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class AmplitudeTest extends TestCase
 {
@@ -17,7 +15,7 @@ class AmplitudeTest extends TestCase
     /** @var Amplitude */
     private $amplitude;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         $this->driver = $this->getMockBuilder(AmplitudeDriverInterface::class)
             ->disableOriginalConstructor()

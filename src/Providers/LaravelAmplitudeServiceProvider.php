@@ -15,43 +15,37 @@ use LaravelAmplitude\Events\SendQueuedEvents;
 
 class LaravelAmplitudeServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     */
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../../config/amplitude.php' => config_path('amplitude.php'),
+            __DIR__.'/../../config/amplitude.php' => config_path('amplitude.php'),
         ]);
     }
 
-    /**
-     * Register the application services.
-     */
     public function register()
     {
         $this->app->singleton(Amplitude::class, function () {
             $amplitudeDriver = new AmplitudeDriver(\Zumba\Amplitude\Amplitude::getInstance());
-            $amplitudeDriver->init(config('amplitude.api_key'));
+            $amplitudeDriver->init(config('amplitude.api_key'), config('amplitude.api_url'));
 
             $factory = new AmplitudeFactory([
                 $amplitudeDriver,
                 $this->app->make(LogDriver::class),
-                $this->app->make(NullDriver::class)
+                $this->app->make(NullDriver::class),
             ]);
 
-            return $factory->makeFor(config('amplitude.driver'));
+            return $factory->makeFor(config('amplitude.driver', 'amplitude'));
         });
 
         /** @var Dispatcher $eventDispatcher */
         $eventDispatcher = app()->make(Dispatcher::class);
-        $eventDispatcher->listen(SendQueuedEvents::class, function() {
+        $eventDispatcher->listen(SendQueuedEvents::class, function () {
             /** @var Amplitude $amplitude */
             $amplitude = app()->make(Amplitude::class);
             $amplitude->sendQueuedEvents();
         });
 
-        $eventDispatcher->listen([RequestHandled::class, CommandFinished::class], function() {
+        $eventDispatcher->listen([RequestHandled::class, CommandFinished::class], function () {
             event(new SendQueuedEvents());
         });
     }

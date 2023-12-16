@@ -1,13 +1,11 @@
 <?php
 
-
 namespace LaravelAmplitude\Tests\Drivers;
 
-
-use Zumba\Amplitude\Amplitude;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\MockObject\MockObject;
 use LaravelAmplitude\Drivers\AmplitudeDriver;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
+use Zumba\Amplitude\Amplitude;
 
 class AmplitudeDriverTest extends TestCase
 {
@@ -17,7 +15,7 @@ class AmplitudeDriverTest extends TestCase
     /** @var AmplitudeDriver */
     private $driver;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         $this->amplitude = $this->getMockBuilder(Amplitude::class)->disableOriginalConstructor()->getMock();
         $this->driver = new AmplitudeDriver($this->amplitude);
@@ -33,6 +31,18 @@ class AmplitudeDriverTest extends TestCase
             ->with('APIKEY');
 
         $this->driver->init('APIKEY');
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_init_with_api_url()
+    {
+        $this->amplitude->expects(self::once())
+            ->method('init')
+            ->with('APIKEY', null, 'APIURL');
+
+        $this->driver->init('APIKEY', 'APIURL');
     }
 
     /**

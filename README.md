@@ -6,15 +6,13 @@
 composer require viezel/laravel-amplitude
 ```
 
-Do not forget to publish the config file:
+The `AMPLITUDE_API_URL` is either US or EU based. Please pay attention. 
 
-```bash
-artisan vendor:publish
+```env
+AMPLITUDE_API_KEY=
+AMPLITUDE_API_URL=https://api.eu.amplitude.com/2/httpapi
 ```
 
-To be up and running, just add the Amplitude API Key of your project in the `.env` file, using `AMPLITUDE_API_KEY` as key.
-
-If you want to use the `Amplitude` facade, remember to add the following line to your `config/app.php`, in the `aliases` item.
 
 ```php
 'aliases' => [
@@ -96,15 +94,8 @@ Amplitude::queueEvent('subscription_paid', ['was_trial' => true]);
 Amplitude::sendQueuedEvents();
 ```
 
-### Security
-
-If you discover any security related issues, please email francesco@ahia.store instead of using the issue tracker.
-
 ## Credits
 
 - [Francesco Malatesta](https://github.com/francescomalatesta)
 - [All Contributors](../../contributors)
 
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

@@ -1,40 +1,34 @@
 <?php
 
-
 namespace LaravelAmplitude\Drivers;
-
 
 use Zumba\Amplitude\Amplitude;
 
 class AmplitudeDriver implements AmplitudeDriverInterface
 {
-    /** @var Amplitude */
-    private $instance;
+    private Amplitude $instance;
 
-    /**
-     * @param Amplitude $instance
-     */
     public function __construct(Amplitude $instance)
     {
         $this->instance = $instance;
     }
 
-    public function init($apiKey)
+    public function init(string $apiKey, ?string $apiUrl = null)
     {
-        $this->instance->init($apiKey);
+        $this->instance->init($apiKey, null, $apiUrl);
     }
 
-    public function setUserId($userId)
+    public function setUserId(string $userId): void
     {
         $this->instance->setUserId($userId);
     }
 
-    public function setUserProperties($userProperties)
+    public function setUserProperties(array $userProperties): void
     {
         $this->instance->setUserProperties($userProperties);
     }
 
-    public function sendEvent($name, $properties)
+    public function sendEvent(string $name, array $properties = []): void
     {
         $this->instance->logEvent(
             $name,
@@ -42,17 +36,17 @@ class AmplitudeDriver implements AmplitudeDriverInterface
         );
     }
 
-    public function queueEvent($name, $properties)
+    public function queueEvent(string $name, array $properties = []): void
     {
         $this->instance->queueEvent($name, $properties);
     }
 
-    public function sendQueuedEvents()
+    public function sendQueuedEvents(): void
     {
         $this->instance->logQueuedEvents();
     }
 
-    public function getDriverName()
+    public function getDriverName(): string
     {
         return 'amplitude';
     }

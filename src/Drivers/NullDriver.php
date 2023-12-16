@@ -1,42 +1,40 @@
 <?php
 
-
 namespace LaravelAmplitude\Drivers;
-
 
 class NullDriver implements AmplitudeDriverInterface
 {
-    public function init($apiKey)
+    public function init(string $apiKey, ?string $apiUrl = null)
     {
-        return;
+
     }
 
-    public function setUserId($userId)
+    public function setUserId(string $userId)
     {
-        return;
+
     }
 
-    public function setUserProperties($userProperties)
+    public function setUserProperties(array $userProperties)
     {
-        return;
+
     }
 
-    public function sendEvent($name, $properties)
+    public function sendEvent(string $name, array $properties = [])
     {
-        return;
+
     }
 
-    public function queueEvent($name, $properties)
+    public function queueEvent(string $name, array $properties = [])
     {
-        return;
+
     }
 
-    public function sendQueuedEvents()
+    public function sendQueuedEvents(): void
     {
-        return;
+
     }
 
-    public function getDriverName()
+    public function getDriverName(): string
     {
         return 'null';
     }

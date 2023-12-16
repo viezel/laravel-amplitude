@@ -2,7 +2,6 @@
 
 namespace LaravelAmplitude\Tests\Drivers;
 
-
 use Illuminate\Log\LogManager;
 use LaravelAmplitude\Drivers\LogDriver;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -15,7 +14,7 @@ class LogDriverTest extends TestCase
 
     private $driver;
 
-    public function setUp() : void
+    public function setUp(): void
     {
         $this->logger = $this->getMockBuilder(LogManager::class)->disableOriginalConstructor()->getMock();
         $this->driver = new LogDriver($this->logger);
