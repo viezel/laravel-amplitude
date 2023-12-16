@@ -24,6 +24,10 @@ class LaravelAmplitudeServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__.'/../../config/amplitude.php', 'amplitude'
+        );
+
         $this->app->singleton(Amplitude::class, function () {
             $amplitudeDriver = new AmplitudeDriver(\Zumba\Amplitude\Amplitude::getInstance());
             $amplitudeDriver->init(config('amplitude.api_key'), config('amplitude.api_url'));
