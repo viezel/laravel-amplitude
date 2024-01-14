@@ -4,17 +4,19 @@ namespace LaravelAmplitude\Drivers;
 
 interface AmplitudeDriverInterface
 {
-    public function init(string $apiKey, ?string $apiUrl = null);
+    public function init(string $apiKey, ?string $userId = null): self;
 
-    public function setUserId(string $userId);
+    public function setUserId(string $userId): self;
 
-    public function setUserProperties(array $userProperties);
+    public function setOptions(array $options): self;
 
-    public function sendEvent(string $name, array $properties = []);
+    public function setUserProperties(array $userProperties): self;
 
-    public function queueEvent(string $name, array $properties = []);
+    public function sendEvent(string $name, array $properties = []): self;
 
-    public function sendQueuedEvents(): void;
+    public function queueEvent(string $name, array $properties = []): self;
+
+    public function sendQueuedEvents(): self;
 
     public function getDriverName(): string;
 }

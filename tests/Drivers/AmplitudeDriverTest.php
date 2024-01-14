@@ -12,8 +12,7 @@ class AmplitudeDriverTest extends TestCase
     /** @var Amplitude | MockObject */
     private $amplitude;
 
-    /** @var AmplitudeDriver */
-    private $driver;
+    private AmplitudeDriver $driver;
 
     public function setUp(): void
     {
@@ -40,9 +39,9 @@ class AmplitudeDriverTest extends TestCase
     {
         $this->amplitude->expects(self::once())
             ->method('init')
-            ->with('APIKEY', null, 'APIURL');
+            ->with('APIKEY', 'USERID');
 
-        $this->driver->init('APIKEY', 'APIURL');
+        $this->driver->init('APIKEY', 'USERID');
     }
 
     /**
@@ -55,6 +54,18 @@ class AmplitudeDriverTest extends TestCase
             ->with('ID');
 
         $this->driver->setUserId('ID');
+    }
+
+    /**
+     * @test
+     */
+    public function it_should_set_options()
+    {
+        $this->amplitude->expects(self::once())
+            ->method('setOptions')
+            ->with(['param' => 'value']);
+
+        $this->driver->setOptions(['param' => 'value']);
     }
 
     /**

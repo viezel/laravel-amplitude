@@ -51,6 +51,18 @@ class AmplitudeTest extends TestCase
     /**
      * @test
      */
+    public function it_should_set_options()
+    {
+        $this->driver->expects(self::once())
+            ->method('setOptions')
+            ->with(['property' => 'value']);
+
+        $this->amplitude->setOptions(['property' => 'value']);
+    }
+
+    /**
+     * @test
+     */
     public function it_should_set_user_properties()
     {
         $this->driver->expects(self::once())

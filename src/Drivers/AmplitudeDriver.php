@@ -13,37 +13,56 @@ class AmplitudeDriver implements AmplitudeDriverInterface
         $this->instance = $instance;
     }
 
-    public function init(string $apiKey, ?string $apiUrl = null)
+    public function init(string $apiKey, ?string $userId = null): self
     {
-        $this->instance->init($apiKey, null, $apiUrl);
+        $this->instance->init($apiKey, $userId);
+
+        return $this;
     }
 
-    public function setUserId(string $userId): void
+    public function setUserId(string $userId): self
     {
         $this->instance->setUserId($userId);
+
+        return $this;
     }
 
-    public function setUserProperties(array $userProperties): void
+    public function setOptions(array $options): self
+    {
+        $this->instance->setOptions($options);
+
+        return $this;
+    }
+
+    public function setUserProperties(array $userProperties): self
     {
         $this->instance->setUserProperties($userProperties);
+
+        return $this;
     }
 
-    public function sendEvent(string $name, array $properties = []): void
+    public function sendEvent(string $name, array $properties = []): self
     {
         $this->instance->logEvent(
             $name,
             $properties
         );
+
+        return $this;
     }
 
-    public function queueEvent(string $name, array $properties = []): void
+    public function queueEvent(string $name, array $properties = []): self
     {
         $this->instance->queueEvent($name, $properties);
+
+        return $this;
     }
 
-    public function sendQueuedEvents(): void
+    public function sendQueuedEvents(): self
     {
         $this->instance->logQueuedEvents();
+
+        return $this;
     }
 
     public function getDriverName(): string

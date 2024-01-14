@@ -13,33 +13,43 @@ class Amplitude
         $this->driver = $driver;
     }
 
-    public function init(string $apiKey, ?string $apiUrl = null): void
+    public function init(string $apiKey, ?string $userId = null): AmplitudeDriverInterface
     {
-        $this->driver->init($apiKey, $apiUrl);
+        return $this->driver->init($apiKey, $userId);
     }
 
-    public function setUserId(string $userId): void
+    public function setUserId(string $userId): AmplitudeDriverInterface
     {
-        $this->driver->setUserId($userId);
+        return $this->driver->setUserId($userId);
     }
 
-    public function setUserProperties(array $userProperties): void
+    public function setOptions(array $options): AmplitudeDriverInterface
     {
-        $this->driver->setUserProperties($userProperties);
+        return $this->driver->setOptions($options);
     }
 
-    public function sendEvent(string $name, array $properties = []): void
+    public function setUserProperties(array $userProperties): AmplitudeDriverInterface
     {
-        $this->driver->sendEvent($name, $properties);
+        return $this->driver->setUserProperties($userProperties);
     }
 
-    public function queueEvent(string $name, array $properties = []): void
+    public function sendEvent(string $name, array $properties = []): AmplitudeDriverInterface
     {
-        $this->driver->queueEvent($name, $properties);
+        return $this->driver->sendEvent($name, $properties);
     }
 
-    public function sendQueuedEvents(): void
+    public function queueEvent(string $name, array $properties = []): AmplitudeDriverInterface
     {
-        $this->driver->sendQueuedEvents();
+        return $this->driver->queueEvent($name, $properties);
+    }
+
+    public function sendQueuedEvents(): AmplitudeDriverInterface
+    {
+        return $this->driver->sendQueuedEvents();
+    }
+
+    public function getDriverName(): string
+    {
+        return $this->driver->getDriverName();
     }
 }
