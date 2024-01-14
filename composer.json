@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.2|^8.3",
         "illuminate/support": "^9.0|^10.0",
-        "zumba/amplitude-php": "^1.0"
+        "viezel/amplitude-php-sdk": "^1.0"
     },
     "require-dev": {
         "orchestra/testbench": "^7.0|^8.0",

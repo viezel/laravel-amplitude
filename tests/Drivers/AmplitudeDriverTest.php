@@ -5,7 +5,7 @@ namespace LaravelAmplitude\Tests\Drivers;
 use LaravelAmplitude\Drivers\AmplitudeDriver;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Zumba\Amplitude\Amplitude;
+use Viezel\Amplitude\Amplitude;
 
 class AmplitudeDriverTest extends TestCase
 {

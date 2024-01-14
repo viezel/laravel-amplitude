@@ -2,7 +2,7 @@
 
 namespace LaravelAmplitude\Drivers;
 
-use Zumba\Amplitude\Amplitude;
+use Viezel\Amplitude\Amplitude;
 
 class AmplitudeDriver implements AmplitudeDriverInterface
 {

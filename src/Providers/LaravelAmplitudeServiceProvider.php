@@ -29,7 +29,7 @@ class LaravelAmplitudeServiceProvider extends ServiceProvider
         );
 
         $this->app->singleton(Amplitude::class, function () {
-            $amplitudeDriver = new AmplitudeDriver(\Zumba\Amplitude\Amplitude::getInstance());
+            $amplitudeDriver = new AmplitudeDriver(\Viezel\Amplitude\Amplitude::getInstance());
             $amplitudeDriver->init(config('amplitude.api_key'), config('amplitude.api_url'));
 
             $factory = new AmplitudeFactory([
